@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+    font-family: "Arial Black", sans-serif;
+    font-size: 2rem;
+}
+
+#container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+h1 {
+    width: 100%;
+    font-style: italic;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 3%;
+}
+
+#rules, #letters {
+    width: 20%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 2%;
+    border: 2px solid black;
+    font-size: 1.5rem;
+}
+
+#pendu {
+    width: 40%;
+    height: 250px;
+}
+
+#game {
+    width: 100%;
+    margin-top: 3%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#choiceD {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    margin: 3% auto 3% auto;
+}
+
+button {
+    width: 15%;
+    padding: 1%;
+    font-weight: bold;
+}
+
+#tentative {
+    width: 100%;
+    text-align: center;
+    margin-top: 2%;
+}
+
+#enter {
+    width: 8%;
+    margin-top: 1%;
+}
+
+#input {
+    width: 5%;
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 1%;
+    margin-right: 2%;
+}

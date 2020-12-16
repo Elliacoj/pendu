@@ -81,3 +81,61 @@ button {
     margin-top: 1%;
     margin-right: 2%;
 }
+
+#wordPin {
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+}
+
+@media screen and (max-width: 800px){
+    #rules, #letters {
+        order: 1;
+        width: 60%;
+        font-size: 1.4rem;
+        margin-bottom: 2%;
+        padding-bottom: 2%;
+    }
+
+    #choiceD {
+        width: 80%;
+    }
+
+    #enter {
+        width: 11%;
+    }
+
+    #input {
+        width: 8%;
+    }
+
+    #pendu {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 520px){
+    #rules, #letters {
+        width: 80%;
+    }
+
+    #choiceD {
+        width: 100%;
+    }
+
+    button{
+        width: 19%;
+    }
+
+    #enter {
+        width: 15%;
+    }
+
+    #input {
+        width: 11%;
+    }
+
+    #pendu {
+        width: 80%;
+    }
+}

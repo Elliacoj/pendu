@@ -8,7 +8,7 @@ let hard = document.getElementById("hard");
 let input = document.createElement("input");
 let enter = document.createElement("button");
 let tentative = document.createElement("p");
-let array =["Orange", "Pomme"];
+let array =["Concombre", "Anticonstitutionnellement"];
 let wordLettres = [];
 let wordLettresR = [];
 let point = 6;
@@ -43,7 +43,6 @@ function gameOn(point) {
     let num = random();
     let word = array[num];
     wordLettresR.splice(0, wordLettresR.length);
-    console.log(wordLettresR)
     for(let x = 0; x < word.length; x++) {
         wordLettresR.push(word.substring(x, (x+1)));
     }
@@ -58,7 +57,6 @@ function random() {
 function wordChoice(random) {
     let word = array[random];
     wordLettres.splice(0, wordLettres.length);
-    console.log(wordLettres)
     for(let x = 0; x < word.length; x++) {
         wordPin.innerHTML += "_ ";
         wordLettres.push("_ ")
@@ -81,7 +79,7 @@ function choice(word, points, img, win, point) {
             input.value = "";
             letters.innerHTML += essay + "<br>";
             for(let x = 0; x < word.length; x++) {
-                if(essay === wordLettresR[x].toLowerCase()) {
+                if(essay.toLowerCase() === wordLettresR[x].toLowerCase()) {
                     wordLettres.splice(x, 1, (essay + " "));
                     win++
                 }

@@ -88,6 +88,12 @@ button {
     font-size: 3rem;
 }
 
+#letters {
+    overflow: auto;
+    height: 150px;
+    text-align: center;
+}
+
 @media screen and (max-width: 800px){
     #rules, #letters {
         order: 1;
@@ -95,6 +101,10 @@ button {
         font-size: 1.4rem;
         margin-bottom: 2%;
         padding-bottom: 2%;
+    }
+
+    #letters {
+        width: 40%;
     }
 
     #choiceD {
@@ -115,7 +125,7 @@ button {
 }
 
 @media screen and (max-width: 520px){
-    #rules, #letters {
+    #rules {
         width: 80%;
     }
 

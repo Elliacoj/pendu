@@ -19,7 +19,6 @@ game.append(wordPin);
 
 rules.innerHTML = "Quelques régles: " + "<br><br>" + "Vous pouvez choisir la difficulté pour votre nombre d'erreur autorisé (facile: 6, normal: 4, difficile: 2)." + "<br>";
 letters.innerHTML = "lettres utilisées :" + "<br><br>";
-
 gameOn(point)
 
 tentative.id = "tentative";
@@ -79,7 +78,7 @@ function choice(word, points, img, win, point) {
             input.value = "";
             letters.innerHTML += essay + "<br>";
             for(let x = 0; x < word.length; x++) {
-                if(essay.toLowerCase() === wordLettresR[x].toLowerCase()) {
+                if((essay.toLowerCase() === wordLettresR[x].toLowerCase()) && wordLettres[x] === "_ ") {
                     wordLettres.splice(x, 1, (essay + " "));
                     win++
                 }

@@ -11,6 +11,7 @@ let tentative = document.createElement("p");
 let array =["Orange", "Pomme"];
 let wordLettres = [];
 let wordLettresR = [];
+let point = 6;
 let wordPin = document.createElement("p");
 
 wordPin.id = "wordPin"
@@ -19,7 +20,7 @@ game.append(wordPin);
 rules.innerHTML = "Quelques régles: " + "<br><br>" + "Vous pouvez choisir la difficulté pour votre nombre d'erreur autorisé (facile: 6, normal: 4, difficile: 2)." + "<br>";
 letters.innerHTML = "lettres utilisées :" + "<br><br>";
 
-gameOn()
+gameOn(point)
 
 tentative.id = "tentative";
 game.append(tentative);
@@ -30,22 +31,24 @@ enter.innerHTML = "Entrer";
 game.append(input);
 game.append(enter);
 
-function gameOn() {
+function gameOn(point) {
     let img = document.createElement("img");
     img.style.width = "100%";
     img.style.height = "100%";
     img.src = "un.webp";
     pendu.append(img);
-    let points = 6;
+    let points = point;
     let win = 0;
     tentative.innerHTML = "Nombre de tentavive: " + points;
     let num = random();
     let word = array[num];
+    wordLettresR.splice(0, wordLettresR.length);
+    console.log(wordLettresR)
     for(let x = 0; x < word.length; x++) {
         wordLettresR.push(word.substring(x, (x+1)));
     }
     wordChoice(num);
-    choice(word, points, img, win);
+    choice(word, points, img, win, point);
 }
 
 function random() {
@@ -54,22 +57,22 @@ function random() {
 
 function wordChoice(random) {
     let word = array[random];
+    wordLettres.splice(0, wordLettres.length);
+    console.log(wordLettres)
     for(let x = 0; x < word.length; x++) {
         wordPin.innerHTML += "_ ";
         wordLettres.push("_ ")
     }
 }
 
-function reset() {
+function reset(point) {
     pendu.removeChild(pendu.lastElementChild);
-    wordLettres.splice(0, wordLettres.length);
-    wordLettresR.splice(0, wordLettresR.length);
     wordPin.innerHTML = "";
     letters.innerHTML = "lettres utilisées :" + "<br><br>";
-    gameOn();
+    gameOn(point);
 }
 
-function choice(word, points, img, win) {
+function choice(word, points, img, win, point) {
 
     let test = function() {
         if(input.value.length === 1) {
@@ -86,7 +89,6 @@ function choice(word, points, img, win) {
                     length++
                 }
             }
-            console.log(length);
             if(length === word.length) {
                 points--;
                 image(points, img);
@@ -96,20 +98,59 @@ function choice(word, points, img, win) {
             for(let y = 0; y < word.length; y++) {
                 wordPin.innerHTML += wordLettres[y];
             }
-            console.log(win);
             if(points === 0) {
                 alert("Perdu");
-                reset();
+                reset(point);
                 enter.removeEventListener("click", test);
+                easy.removeEventListener("click", easyGame);
+                normal.removeEventListener("click", normalGame);
+                hard.removeEventListener("click", hardGame);
             }
             else if(win === word.length) {
                 alert("Gagné");
-                reset();
+                reset(point);
                 enter.removeEventListener("click", test);
+                easy.removeEventListener("click", easyGame);
+                normal.removeEventListener("click", normalGame);
+                hard.removeEventListener("click", hardGame);
             }
         }
     }
     enter.addEventListener("click", test);
+
+    let easyGame = function () {
+        let point = 6;
+        reset(point,test);
+        easy.removeEventListener("click", easyGame);
+        enter.removeEventListener("click", test);
+        normal.removeEventListener("click", normalGame);
+        hard.removeEventListener("click", hardGame);
+    }
+
+    easy.addEventListener("click", easyGame);
+
+    let normalGame = function () {
+        let point = 4;
+        reset(point,test);
+        easy.removeEventListener("click", easyGame);
+        enter.removeEventListener("click", test);
+        normal.removeEventListener("click", normalGame);
+        hard.removeEventListener("click", hardGame);
+    }
+
+    normal.addEventListener("click", normalGame);
+
+    let hardGame = function () {
+        let point = 2;
+        reset(point,test);
+        easy.removeEventListener("click", easyGame);
+        enter.removeEventListener("click", test);
+        normal.removeEventListener("click", normalGame);
+        hard.removeEventListener("click", hardGame);
+    }
+
+    hard.addEventListener("click", hardGame);
+
 }
 
 function image(points, img){

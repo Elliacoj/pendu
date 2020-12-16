@@ -150,7 +150,6 @@ function choice(word, points, img, win, point) {
     }
 
     hard.addEventListener("click", hardGame);
-
 }
 
 function image(points, img){

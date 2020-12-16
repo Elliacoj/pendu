@@ -23,7 +23,6 @@ letters.innerHTML = "lettres utilisées :" + "<br><br>";
 gameOn()
 
 tentative.id = "tentative";
-tentative.innerHTML = "Nombre de tentavive: ";
 game.append(tentative);
 input.id = "input";
 input.pattern ="[a-z]{1}"
@@ -33,6 +32,8 @@ game.append(input);
 game.append(enter);
 
 function gameOn() {
+    let points = 6;
+    tentative.innerHTML = "Nombre de tentavive: " + points;
     let num = random();
     let word = array[num];
     for(let x = 0; x < word.length; x++) {
@@ -53,11 +54,19 @@ function gameOn() {
                 length++
             }
         }
+        if(length === word.length) {
+            points--;
+        }
+        length = 0;
+        tentative.innerHTML = "Nombre de tentavive: " + points;
         wordPin.innerHTML = "";
         for(let y = 0; y < word.length; y++) {
             wordPin.innerHTML += wordLettres[y];
         }
-        console.log(wordLettres)
+        if(points === 0) {
+            alert("Perdu");
+            reset();
+        }
     });
 }
 
@@ -71,7 +80,14 @@ function wordChoice(random) {
         wordPin.innerHTML += "_ ";
         wordLettres.push("_ ")
     }
-    //console.log(word.substring(2, 3));
+}
+
+function reset() {
+    wordLettres.splice(0, wordLettres.length);
+    wordLettresR.splice(0, wordLettresR.length);
+    wordPin.innerHTML = "";
+    letters.innerHTML = "lettres utilisées :" + "<br><br>";
+    gameOn();
 }
 
 

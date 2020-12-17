@@ -30,7 +30,9 @@ enter.innerHTML = "Entrer";
 game.append(input);
 game.append(enter);
 
+/**
 // Start the game and initializes the variables
+ */
 function gameOn(point) {
     let img = document.createElement("img");
     img.style.width = "100%";
@@ -50,12 +52,16 @@ function gameOn(point) {
     choice(word, points, img, win, point);
 }
 
+/**
 // Create a random number
+ */
 function random() {
     return  Math.trunc(Math.random() * array.length);
 }
 
+/**
 // Choice a random word
+ */
 function wordChoice(random) {
     let word = array[random];
     wordLettres.splice(0, wordLettres.length);
@@ -65,7 +71,9 @@ function wordChoice(random) {
     }
 }
 
+/**
 //Reset the game for the next game
+ */
 function reset(point) {
     pendu.removeChild(pendu.lastElementChild);
     wordPin.innerHTML = "";
@@ -73,7 +81,9 @@ function reset(point) {
     gameOn(point);
 }
 
+/**
 //Manages the various buttons and conditions for win or loose
+ */
 function choice(word, points, img, win, point) {
 
     let test = function() {
@@ -112,31 +122,39 @@ function choice(word, points, img, win, point) {
     }
     enter.addEventListener("click", test);
 
+    /**
     //Easy mode of the game
+     */
     let easyGame = function () {
-        let point = 6;
+        point = 6;
         remove(point);
     }
 
     easy.addEventListener("click", easyGame);
 
+    /**
     //Normal mode of the game
+     */
     let normalGame = function () {
-        let point = 4;
+        point = 4;
         remove(point);
     }
 
     normal.addEventListener("click", normalGame);
 
+    /**
     //Hard mode of the game
+     */
     let hardGame = function () {
-        let point = 2;
+        point = 2;
         remove(point);
     }
 
     hard.addEventListener("click", hardGame);
 
+    /**
     //Remove addEvent for the various buttons and reset the game
+     */
     function remove(point) {
         reset(point,test);
         easy.removeEventListener("click", easyGame);
@@ -146,7 +164,9 @@ function choice(word, points, img, win, point) {
     }
 }
 
+/**
 // Switch the images for the lost points
+ */
 function image(points, img) {
     switch (points) {
         case 5:

@@ -37,7 +37,7 @@ function gameOn(point) {
     let img = document.createElement("img");
     img.style.width = "100%";
     img.style.height = "100%";
-    img.src = "un.webp";
+    img.src = "6.webp";
     pendu.append(img);
     let points = point;
     let win = 0;
@@ -168,24 +168,5 @@ function choice(word, points, img, win, point) {
 // Switch the images for the lost points
  */
 function image(points, img) {
-    switch (points) {
-        case 5:
-            img.src = "deux.webp";
-            break;
-        case 4:
-            img.src = "trois.webp";
-            break;
-        case 3:
-            img.src = "quatre.webp";
-            break;
-        case 2:
-            img.src = "cinq.webp";
-            break;
-        case 1:
-            img.src = "six.webp";
-            break;
-        case 0:
-            img.src = "sept.webp";
-            break;
-    }
+    img.src = points + ".webp";
 }

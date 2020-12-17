@@ -30,6 +30,7 @@ enter.innerHTML = "Entrer";
 game.append(input);
 game.append(enter);
 
+// Start the game and initializes the variables
 function gameOn(point) {
     let img = document.createElement("img");
     img.style.width = "100%";
@@ -49,10 +50,12 @@ function gameOn(point) {
     choice(word, points, img, win, point);
 }
 
+// Create a random number
 function random() {
     return  Math.trunc(Math.random() * array.length);
 }
 
+// Choice a random word
 function wordChoice(random) {
     let word = array[random];
     wordLettres.splice(0, wordLettres.length);
@@ -62,6 +65,7 @@ function wordChoice(random) {
     }
 }
 
+//Reset the game for the next game
 function reset(point) {
     pendu.removeChild(pendu.lastElementChild);
     wordPin.innerHTML = "";
@@ -69,6 +73,7 @@ function reset(point) {
     gameOn(point);
 }
 
+//Manages the various buttons and conditions for win or loose
 function choice(word, points, img, win, point) {
 
     let test = function() {
@@ -97,75 +102,70 @@ function choice(word, points, img, win, point) {
             }
             if(points === 0) {
                 alert("Perdu");
-                reset(point);
-                enter.removeEventListener("click", test);
-                easy.removeEventListener("click", easyGame);
-                normal.removeEventListener("click", normalGame);
-                hard.removeEventListener("click", hardGame);
+                remove(point);
             }
             else if(win === word.length) {
                 alert("Gagné");
-                reset(point);
-                enter.removeEventListener("click", test);
-                easy.removeEventListener("click", easyGame);
-                normal.removeEventListener("click", normalGame);
-                hard.removeEventListener("click", hardGame);
+                remove(point);
             }
         }
     }
     enter.addEventListener("click", test);
 
+    //Easy mode of the game
     let easyGame = function () {
         let point = 6;
-        reset(point,test);
-        easy.removeEventListener("click", easyGame);
-        enter.removeEventListener("click", test);
-        normal.removeEventListener("click", normalGame);
-        hard.removeEventListener("click", hardGame);
+        remove(point);
     }
 
     easy.addEventListener("click", easyGame);
 
+    //Normal mode of the game
     let normalGame = function () {
         let point = 4;
-        reset(point,test);
-        easy.removeEventListener("click", easyGame);
-        enter.removeEventListener("click", test);
-        normal.removeEventListener("click", normalGame);
-        hard.removeEventListener("click", hardGame);
+        remove(point);
     }
 
     normal.addEventListener("click", normalGame);
 
+    //Hard mode of the game
     let hardGame = function () {
         let point = 2;
+        remove(point);
+    }
+
+    hard.addEventListener("click", hardGame);
+
+    //Remove addEvent for the various buttons and reset the game
+    function remove(point) {
         reset(point,test);
         easy.removeEventListener("click", easyGame);
         enter.removeEventListener("click", test);
         normal.removeEventListener("click", normalGame);
         hard.removeEventListener("click", hardGame);
     }
-
-    hard.addEventListener("click", hardGame);
 }
 
-function image(points, img){
-    if(points === 5) {
-        img.src = "deux.webp";
-    }
-    else if(points === 4) {
-        img.src = "trois.webp";
-    }
-    else if(points === 3) {
-        img.src = "quatre.webp";
-    }
-    else if(points === 2) {
-        img.src = "cinq.webp";
-    }
-    else if(points === 1) {
-        img.src = "six.webp";
-    }
-    else if(points === 0) {
-        img.src = "sept.webp";
+// Switch the images for the lost points
+function image(points, img) {
+    switch (points) {
+        case 5:
+            img.src = "deux.webp";
+            break;
+        case 4:
+            img.src = "trois.webp";
+            break;
+        case 3:
+            img.src = "quatre.webp";
+            break;
+        case 2:
+            img.src = "cinq.webp";
+            break;
+        case 1:
+            img.src = "six.webp";
+            break;
+        case 0:
+            img.src = "sept.webp";
+            break;
     }
 }
